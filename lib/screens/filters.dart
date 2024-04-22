@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals/providers/filters_provider.dart';
+
 // import 'package:meals/screens/tabs.dart';
 // import 'package:meals/widgets/main_drawer.dart';
-
-enum Filter {
-  glutenFree,
-  lactoseFree,
-  vegetarian,
-  vegan,
-}
+import 'package:meals/providers/filters_provider.dart';
 
 class FiltersScreen extends ConsumerWidget {
   const FiltersScreen({super.key});
@@ -22,27 +16,14 @@ class FiltersScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
-      // drawer: MainDrawer(
-      //   onSelectScreen: (identifier) {
-      //     Navigator.of(context).pop();
-      //     if (identifier == 'meals') {
-      //       Navigator.of(context).pushReplacement(
-      //         MaterialPageRoute(
-      //           builder: (ctx) => const TabsScreen(),
-      //         ),
-      //       );
-      //     }
-      //   },
-      // ),
       body: Column(
         children: [
           SwitchListTile(
             value: activeFilters[Filter.glutenFree]!,
             onChanged: (isChecked) {
-              ref.read(filtersProvider.notifier).setFilter(
-                    Filter.glutenFree,
-                    isChecked,
-                  );
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.glutenFree, isChecked);
             },
             title: Text(
               'Gluten-free',
@@ -62,10 +43,9 @@ class FiltersScreen extends ConsumerWidget {
           SwitchListTile(
             value: activeFilters[Filter.lactoseFree]!,
             onChanged: (isChecked) {
-              ref.read(filtersProvider.notifier).setFilter(
-                    Filter.lactoseFree,
-                    isChecked,
-                  );
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.lactoseFree, isChecked);
             },
             title: Text(
               'Lactose-free',
@@ -85,10 +65,9 @@ class FiltersScreen extends ConsumerWidget {
           SwitchListTile(
             value: activeFilters[Filter.vegetarian]!,
             onChanged: (isChecked) {
-              ref.read(filtersProvider.notifier).setFilter(
-                    Filter.vegetarian,
-                    isChecked,
-                  );
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.vegetarian, isChecked);
             },
             title: Text(
               'Vegetarian',
@@ -97,7 +76,7 @@ class FiltersScreen extends ConsumerWidget {
                   ),
             ),
             subtitle: Text(
-              'Only include Vegetarian meals.',
+              'Only include vegetarian meals.',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
@@ -108,10 +87,9 @@ class FiltersScreen extends ConsumerWidget {
           SwitchListTile(
             value: activeFilters[Filter.vegan]!,
             onChanged: (isChecked) {
-              ref.read(filtersProvider.notifier).setFilter(
-                    Filter.vegan,
-                    isChecked,
-                  );
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.vegan, isChecked);
             },
             title: Text(
               'Vegan',
@@ -120,7 +98,7 @@ class FiltersScreen extends ConsumerWidget {
                   ),
             ),
             subtitle: Text(
-              'Only include Vegan meals.',
+              'Only include vegan meals.',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
